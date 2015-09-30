@@ -83,3 +83,15 @@ document.getElementById("clear").addEventListener("click", function(e) {
   fbObject.emptyBox(document.getElementById("result-box"));
 });
 
+document.getElementById("submitb").addEventListener("click", function(e) {
+  e.preventDefault();
+  fbObject.read(parseInt(document.getElementById('number-oneb').value),parseInt(document.getElementById('number-twob').value));
+  document.getElementById('number-oneb').value = "";
+  document.getElementById('number-twob').value = "";
+  fbObject.write(document.getElementById("result-boxb"));
+});
+
+document.getElementById("clearb").addEventListener("click", function(e) {
+  e.preventDefault();
+  fbObject.emptyBox(document.getElementById("result-boxb"));
+});
