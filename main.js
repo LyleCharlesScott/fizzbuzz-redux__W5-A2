@@ -1,27 +1,18 @@
 "use strict";
 
 var Fizzbuzz = (function() {
-  //list of variables
-    var fbOutputArray = [];
-    var fbOutputTitle = "";
-    var fbOutputString = "";
-    var resultBox = "";
-    var resultTitleContainer = "";
-    var resultContainer = "";
-    var text1 = "";
-    var text2 = "";
   
-  //clear results from screen when second button is pushed
-    var clear = function() {
-      if (resultBox.hasChildNodes()) {
-      resultBox.removeChild(resultBox.childNodes[0]);
-      clear();
+  //internal clear function to erase dom elements from screen
+    var _clear = function(destination) {
+      if (destination.hasChildNodes()) {
+      destination.removeChild(destination.childNodes[0]);
+      _clear(destination);
     }};
-    
-  //calculate fizzbuzz results, output array of results
-    var calculate = function(na, nb) {
+
+  //calculate fizzbuzz using variable passed in by the read method, output array of results.
+    var _calculate = function(na, nb) {
+      var fbOutputArray = [];
       console.log("start of constructor na: " + na + " nb: " + nb);
-      fbOutputArray = [];
       if (na > nb) {
         console.log("na: " + na + " nb: " + nb);
         na = na + nb;
@@ -47,32 +38,32 @@ var Fizzbuzz = (function() {
       return fbOutputArray;
     };
 
-  //read input fields and clear fields, return variables with contents
+  //read input fields and clear fields, return variables with contents. Pass in external values so the function is compartmentalized.
     Fizzbuzz.prototype.read = function(na, nb) {
       this.na = na;
       this.nb = nb;
-      this.fbOutputArray = calculate(na, nb);
+      this.fbOutputArray = _calculate(na, nb);
     };
 
-  //write markup with results of fizzbuzz calculation
-    Fizzbuzz.prototype.write = function() {
-      fbOutputTitle = "Start: " + this.na + " Finish: " + this.nb;
-      fbOutputString = ""; 
+  //write markup with results of fizzbuzz calculation. Uses destination as argument so function can be used generically with any location in the DOM.
+    Fizzbuzz.prototype.write = function(destination) {
+      var fbOutputTitle = "Start: " + this.na + " Finish: " + this.nb;
+      var fbOutputString = ""; 
       for (var j=0; j < (this.fbOutputArray.length); j++) {
         fbOutputString += (this.fbOutputArray[j] + " ");
       };
-      resultBox = document.getElementById("result-box");
-      resultTitleContainer = document.createElement("p");
-      resultContainer = document.createElement("p");
-      text1 = document.createTextNode(fbOutputTitle);
-      text2 = document.createTextNode(fbOutputString);
+      var resultTitleContainer = document.createElement("p");
+      var resultContainer = document.createElement("p");
+      var text1 = document.createTextNode(fbOutputTitle);
+      var text2 = document.createTextNode(fbOutputString);
       resultTitleContainer.appendChild(text1);
       resultContainer.appendChild(text2);
-      resultBox.appendChild(resultTitleContainer);
-      resultBox.appendChild(resultContainer);
+      destination.appendChild(resultTitleContainer);
+      destination.appendChild(resultContainer);
     };
 
-    Fizzbuzz.prototype.emptyBox = clear;
+    //Set up clear function to be usable outside the main class, attached to its own event handler
+    Fizzbuzz.prototype.emptyBox = _clear;
 });
 
 var fbObject = new Fizzbuzz();
@@ -82,11 +73,11 @@ document.getElementById("submit").addEventListener("click", function(e) {
   fbObject.read(parseInt(document.getElementById('number-one').value),parseInt(document.getElementById('number-two').value));
   document.getElementById('number-one').value = "";
   document.getElementById('number-two').value = "";
-  fbObject.write();
+  fbObject.write(document.getElementById("result-box"));
 });
 
 document.getElementById("clear").addEventListener("click", function(e) {
   e.preventDefault();
-  fbObject.emptyBox();
+  fbObject.emptyBox(document.getElementById("result-box"));
 });
 
