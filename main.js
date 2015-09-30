@@ -2,7 +2,7 @@
 
 var Fizzbuzz = (function() {
   
-  //internal clear function to erase dom elements from screen
+  //interal clear function to erase dom elements from screen
     var _clear = function(destination) {
       if (destination.hasChildNodes()) {
       destination.removeChild(destination.childNodes[0]);
@@ -10,10 +10,10 @@ var Fizzbuzz = (function() {
     }};
 
   //calculate fizzbuzz using variable passed in by the read method, output array of results.
-    var _calculate = function(na, nb) {
+    var _calculate = function(firstNumber, secondNumber) {
       var fbOutputArray = [];
-      console.log("na: " + na + " nb: " + nb);
-      for (var i = na; i <= nb; i++) { 
+      console.log("firstNumber: " + firstNumber + " secondNumber: " + secondNumber);
+      for (var i = firstNumber; i <= secondNumber; i++) { 
         var output = ''; 
         if (i%3 === 0) { 
           output += 'Fizz'; 
@@ -30,26 +30,28 @@ var Fizzbuzz = (function() {
     };
 
   //read input fields and clear fields, return variables with contents. Pass in external values so the function is compartmentalized.
-    Fizzbuzz.prototype.read = function(na, nb) {
-      if (!na) {
-        na = 0;
+    Fizzbuzz.prototype.read = function(firstNumber, secondNumber) {
+      //error correction
+      if (!firstNumber) {
+        firstNumber = 0;
       };
-      if (!nb) {
-        nb = 0;
+      if (!secondNumber) {
+        secondNumber = 0;
       };
-      if (na > nb) {
-        na = na + nb;
-        nb = na - nb;
-        na = na - nb;
+      if (firstNumber > secondNumber) {
+        firstNumber = firstNumber + secondNumber;
+        secondNumber = firstNumber - secondNumber;
+        firstNumber = firstNumber - secondNumber;
       };
-      this.na = na;
-      this.nb = nb;
-      this.fbOutputArray = _calculate(na, nb);
+      //assign values to properties of main game object
+      this.firstNumber = firstNumber;
+      this.secondNumber = secondNumber;
+      this.fbOutputArray = _calculate(firstNumber, secondNumber);
     };
 
   //write markup with results of fizzbuzz calculation. Uses destination as argument so function can be used generically with any location in the DOM.
     Fizzbuzz.prototype.write = function(destination) {
-      var fbOutputTitle = "Low number: " + this.na + " High number: " + this.nb;
+      var fbOutputTitle = "Low number: " + this.firstNumber + " High number: " + this.secondNumber;
       var fbOutputString = ""; 
       for (var j=0; j < (this.fbOutputArray.length); j++) {
         fbOutputString += (this.fbOutputArray[j] + " ");
