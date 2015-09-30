@@ -12,15 +12,6 @@ var Fizzbuzz = (function() {
   //calculate fizzbuzz using variable passed in by the read method, output array of results.
     var _calculate = function(na, nb) {
       var fbOutputArray = [];
-      console.log("start of constructor na: " + na + " nb: " + nb);
-      if (na > nb) {
-        console.log("na: " + na + " nb: " + nb);
-        na = na + nb;
-        console.log("na: " + na + " nb: " + nb);
-        nb = na - nb;
-        console.log("na: " + na + " nb: " + nb);
-        na = na - nb;
-      }
       console.log("na: " + na + " nb: " + nb);
       for (var i = na; i <= nb; i++) { 
         var output = ''; 
@@ -46,6 +37,11 @@ var Fizzbuzz = (function() {
       if (!nb) {
         nb = 0;
       };
+      if (na > nb) {
+        na = na + nb;
+        nb = na - nb;
+        na = na - nb;
+      };
       this.na = na;
       this.nb = nb;
       this.fbOutputArray = _calculate(na, nb);
@@ -53,7 +49,7 @@ var Fizzbuzz = (function() {
 
   //write markup with results of fizzbuzz calculation. Uses destination as argument so function can be used generically with any location in the DOM.
     Fizzbuzz.prototype.write = function(destination) {
-      var fbOutputTitle = "First input: " + this.na + " Second input: " + this.nb;
+      var fbOutputTitle = "Low number: " + this.na + " High number: " + this.nb;
       var fbOutputString = ""; 
       for (var j=0; j < (this.fbOutputArray.length); j++) {
         fbOutputString += (this.fbOutputArray[j] + " ");
