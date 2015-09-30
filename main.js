@@ -12,16 +12,19 @@ var na = 0;
 var nb = 0;
 
 
-class Fizzbuzz {
-  constructor(na, nb) {
-  console.log("na: " + na + " nb: " + nb);
+var Fizzbuzz = function (na, nb) {
+  // constructor(na, nb) {
+  console.log("start of constructor na: " + na + " nb: " + nb);
     fbOutputArray = [];
     if (na > nb) {
+      console.log("na: " + na + " nb: " + nb);
       na = na + nb;
+      console.log("na: " + na + " nb: " + nb);
       nb = na - nb;
+      console.log("na: " + na + " nb: " + nb);
       na = na - nb;
     }
-    console.log(na + " " + nb);
+    console.log("na: " + na + " nb: " + nb);
     for (var i = na; i <= nb; i++) { 
       var output = ''; 
       if (i%3 === 0) { 
@@ -49,14 +52,14 @@ class Fizzbuzz {
   resultContainer.appendChild(text2);
   resultBox.appendChild(resultTitleContainer);
   resultBox.appendChild(resultContainer);
-  }
+  // }
 };
 
-(document.getElementById("submit").addEventListener("click", function(e) {
+document.getElementById("submit").addEventListener("click", function(e) {
   new Fizzbuzz(document.getElementById('number-one').value,document.getElementById('number-two').value);
   document.getElementById('number-one').value = "";
   document.getElementById('number-two').value = "";
-}));
+});
 
 document.getElementById("clear").addEventListener("click", function(e) {
   var EmptyBox = function() {if (resultBox.hasChildNodes()) {
