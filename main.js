@@ -40,6 +40,12 @@ var Fizzbuzz = (function() {
 
   //read input fields and clear fields, return variables with contents. Pass in external values so the function is compartmentalized.
     Fizzbuzz.prototype.read = function(na, nb) {
+      if (!na) {
+        na = 0;
+      };
+      if (!nb) {
+        nb = 0;
+      };
       this.na = na;
       this.nb = nb;
       this.fbOutputArray = _calculate(na, nb);
@@ -47,7 +53,7 @@ var Fizzbuzz = (function() {
 
   //write markup with results of fizzbuzz calculation. Uses destination as argument so function can be used generically with any location in the DOM.
     Fizzbuzz.prototype.write = function(destination) {
-      var fbOutputTitle = "Start: " + this.na + " Finish: " + this.nb;
+      var fbOutputTitle = "First input: " + this.na + " Second input: " + this.nb;
       var fbOutputString = ""; 
       for (var j=0; j < (this.fbOutputArray.length); j++) {
         fbOutputString += (this.fbOutputArray[j] + " ");
