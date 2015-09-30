@@ -1,3 +1,6 @@
+Used normalize from John Albin:
+https://github.com/JohnAlbin/normalize-scss
+
 # Week 5 Day 2
 
 We're focusing on event management and DOM manipulation in tonight's
