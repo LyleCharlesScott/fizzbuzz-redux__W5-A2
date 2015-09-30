@@ -1,32 +1,67 @@
-var fbOutput = []
-  
+"use strict";
+
+var fbOutputArray = [];
+var fbOutputTitle = "";
+var fbOutputString = "";
+var resultBox = "";
+var resultTitleContainer = "";
+var resultContainer = "";
+var text1 = "";
+var text2 = "";
+var na = 0;
+var nb = 0;
 
 
-var Fizzbuzz = function(n1, n2) {
-  fbOutput = [];
-  if (n1 > n2) {
-    n1 = n1 + n2;
-    n2 = n1 - n2;
-    n1 = n1 - n2;
+class Fizzbuzz {
+  constructor(na, nb) {
+  console.log("na: " + na + " nb: " + nb);
+    fbOutputArray = [];
+    if (na > nb) {
+      na = na + nb;
+      nb = na - nb;
+      na = na - nb;
+    }
+    console.log(na + " " + nb);
+    for (var i = na; i <= nb; i++) { 
+      var output = ''; 
+      if (i%3 === 0) { 
+        output += 'Fizz'; 
+      }
+      if (i%5 === 0) {
+        output += 'Buzz'; 
+      }
+      if (output === "") { 
+        output = i; 
+      }
+      fbOutputArray.push(output);
+    }
+    fbOutputTitle = "Start: " + na + " Finish: " + nb; 
+    for (var j=0; j < (fbOutputArray.length-1); j++) {
+      fbOutputString += (fbOutputArray[j] + " ");
+    };
+  resultBox = document.getElementById("result-box");
+  resultTitleContainer = document.createElement("p");
+  resultContainer = document.createElement("p");
+  text1 = document.createTextNode(fbOutputTitle);
+  text2 = document.createTextNode(fbOutputString);
+  resultTitleContainer.appendChild(text1);
+  resultContainer.appendChild(text2);
+  resultBox.appendChild(resultTitleContainer);
+  resultBox.appendChild(resultContainer);
   }
-  for (i=n1; i<n2+1; i++) {  // start a loop that iterates from 1 to 100
-    var output = ''; // declare an empty string as a variable for the output
-    if (i%3 === 0) { // see if the count is divisible by 3
-      output += 'Fizz'; // append fizz to the output if the count is divisible by 3
-    }
-    if (i%5 === 0) { // see if the count is divisible by 5
-      output += 'Buzz'; // append buzz to the output if the count is divisible by 5
-    }
-    // the output variable will be empty, "Fizz", "Buzz" or "FizzBuzz" at this point. 
-    if (output === "") { // if output is empty, it wasn't a Fizz or a Buzz
-      output = i; // if it's not a Fizz or a Buzz, assign it the count number
-    }
-    console.log(output); // log the output before restarting the routine
-    fbOutput.push(output);
-  }
-  return fbOutput;
 };
 
+document.getElementById("submit").addEventListener("click", function(e) {
+  //run fizzbuzz using the input from the input fields
+  new Fizzbuzz(document.getElementById('number-one').value,document.getElementById('number-two').value);
+  document.getElementById('number-one').value = "";
+  document.getElementById('number-two').value = "";
+});
 
-Fizzbuzz (5, 30);
-console.log(fbOutput);
+document.getElementById("clear").addEventListener("click", function(e) {
+  var EmptyBox = function() {if (resultBox.hasChildNodes()) {
+    resultBox.removeChild(resultBox.childNodes[0]);
+    EmptyBox();
+  }};
+  EmptyBox();
+});
