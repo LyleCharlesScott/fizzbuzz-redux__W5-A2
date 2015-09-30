@@ -35,8 +35,9 @@ class Fizzbuzz {
       }
       fbOutputArray.push(output);
     }
-    fbOutputTitle = "Start: " + na + " Finish: " + nb; 
-    for (var j=0; j < (fbOutputArray.length-1); j++) {
+    fbOutputTitle = "Start: " + na + " Finish: " + nb;
+    fbOutputString = ""; 
+    for (var j=0; j < (fbOutputArray.length); j++) {
       fbOutputString += (fbOutputArray[j] + " ");
     };
   resultBox = document.getElementById("result-box");
@@ -51,12 +52,11 @@ class Fizzbuzz {
   }
 };
 
-document.getElementById("submit").addEventListener("click", function(e) {
-  //run fizzbuzz using the input from the input fields
+(document.getElementById("submit").addEventListener("click", function(e) {
   new Fizzbuzz(document.getElementById('number-one').value,document.getElementById('number-two').value);
   document.getElementById('number-one').value = "";
   document.getElementById('number-two').value = "";
-});
+}));
 
 document.getElementById("clear").addEventListener("click", function(e) {
   var EmptyBox = function() {if (resultBox.hasChildNodes()) {
