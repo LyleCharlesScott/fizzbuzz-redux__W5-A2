@@ -14,6 +14,8 @@ var nb = 0;
 
 var Fizzbuzz = function (na, nb) {
   // constructor(na, nb) {
+  na = parseInt(na);
+  nb = parseInt(nb);
   console.log("start of constructor na: " + na + " nb: " + nb);
     fbOutputArray = [];
     if (na > nb) {
@@ -56,12 +58,14 @@ var Fizzbuzz = function (na, nb) {
 };
 
 document.getElementById("submit").addEventListener("click", function(e) {
+  e.preventDefault();
   new Fizzbuzz(document.getElementById('number-one').value,document.getElementById('number-two').value);
   document.getElementById('number-one').value = "";
   document.getElementById('number-two').value = "";
 });
 
 document.getElementById("clear").addEventListener("click", function(e) {
+  e.preventDefault();
   var EmptyBox = function() {if (resultBox.hasChildNodes()) {
     resultBox.removeChild(resultBox.childNodes[0]);
     EmptyBox();
