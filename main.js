@@ -68,8 +68,11 @@ var Fizzbuzz = (function() {
     Fizzbuzz.prototype.emptyBox = _clear;
 });
 
+// create two Fizzbuzzes just for sport
 var fbObject = new Fizzbuzz();
+var fbObject2 = new Fizzbuzz();
 
+// activate first FizzBuzz input area
 document.getElementById("submit").addEventListener("click", function(e) {
   e.preventDefault();
   fbObject.read(parseInt(document.getElementById('number-one').value),parseInt(document.getElementById('number-two').value));
@@ -83,15 +86,16 @@ document.getElementById("clear").addEventListener("click", function(e) {
   fbObject.emptyBox(document.getElementById("result-box"));
 });
 
+// activate second FizzBuzz input area
 document.getElementById("submitb").addEventListener("click", function(e) {
   e.preventDefault();
-  fbObject.read(parseInt(document.getElementById('number-oneb').value),parseInt(document.getElementById('number-twob').value));
+  fbObject2.read(parseInt(document.getElementById('number-oneb').value),parseInt(document.getElementById('number-twob').value));
   document.getElementById('number-oneb').value = "";
   document.getElementById('number-twob').value = "";
-  fbObject.write(document.getElementById("result-boxb"));
+  fbObject2.write(document.getElementById("result-boxb"));
 });
 
 document.getElementById("clearb").addEventListener("click", function(e) {
   e.preventDefault();
-  fbObject.emptyBox(document.getElementById("result-boxb"));
+  fbObject2.emptyBox(document.getElementById("result-boxb"));
 });
