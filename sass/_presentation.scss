@@ -1,0 +1,42 @@
+$color-A: #315BB2; //dark blue
+$color-B: #5F93FF; //medium blue
+$color-C: #79A5FF; //light blue
+$color-D: #B2851F; //dark peach
+$color-E: #FFCE5F; //light peach
+
+body {
+  background-color: $color-A;
+  font-family: Helvetica, sans-serif;
+  color: $color-E;
+}
+
+.FB-game-area {
+  border: 3px solid $color-B;
+  background-color: $color-C;
+  border-radius: 1%;
+}
+
+.results {
+  @extend .FB-game-area;
+}
+
+input {
+  border: none;
+  background-color: $color-D;
+  &:focus {
+    color: $color-E;
+  }
+}
+
+input::-webkit-input-placeholder {
+color: $color-E;
+}
+input:-moz-placeholder { /* Firefox 18- */
+color: $color-E;  
+}
+input::-moz-placeholder {  /* Firefox 19+ */
+color: $color-E;  
+}
+input:-ms-input-placeholder {  
+color: $color-E;  
+}

@@ -1,0 +1,13 @@
+.FB {
+  display: flex;
+  flex-direction: row;
+}
+.FB-game-area {
+  width: 50%;
+  margin: 0.5%;
+}
+.results {
+  display: flex;
+  justify-content: center;
+  margin: 0.5%;
+}
