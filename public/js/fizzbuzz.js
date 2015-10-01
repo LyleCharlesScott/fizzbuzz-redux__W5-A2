@@ -5,9 +5,11 @@ var Fizzbuzz = (function() {
   var _firstFizz;
   var _secondBuzz;
   var Fizzbuzz = function(Fizz, Buzz) {
-  _firstFizz = Fizz || 'Fizz';
-  _secondBuzz = Buzz || 'Buzz';
-  console.log(_firstFizz, _secondBuzz, this);
+    _firstFizz = Fizz || 'Fizz';
+    _secondBuzz = Buzz || 'Buzz';
+    this._firstFizz = Fizz || 'Fizz';
+    this._secondBuzz = Buzz || 'Buzz';
+    console.log("inside the routine", this._firstFizz, this._secondBuzz);
   };
 
 //interal clear function to erase dom elements from screen
