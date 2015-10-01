@@ -1,2 +1,17 @@
+@mixin input-placeholder-color ($color) {
+  input::-webkit-input-placeholder {
+    color: $color;
+  }
+  input:-moz-placeholder { /* Firefox 18- */
+    color: $color;  
+  }
+  input::-moz-placeholder {  /* Firefox 19+ */
+    color: $color;  
+  }
+  input:-ms-input-placeholder {  
+    color: $color;  
+  }  
+}
+
 @import "_layout.scss";
 @import "_presentation.scss";

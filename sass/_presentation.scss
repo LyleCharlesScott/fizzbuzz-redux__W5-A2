@@ -9,6 +9,7 @@ body {
   font-family: Helvetica, sans-serif;
   color: $color-E;
   box-sizing: border-box;
+  @include input-placeholder-color ($color-E);
 }
 
 .FB-game-area, .results {
@@ -18,25 +19,19 @@ body {
 }
 
 input {
-  border: none;
+  border: 3px solid $color-D;
   color: $color-E;
   background-color: $color-D;
+  border-radius: 20%/50%;
+  text-align: center;
+  height: 2em;
+  &:hover{
+    border: 3px solid $color-E;
+  }
   &:focus {
     color: $color-E;
+    border: 3px solid $color-E;
   }
-}
-
-input::-webkit-input-placeholder {
-color: $color-E;
-}
-input:-moz-placeholder { /* Firefox 18- */
-color: $color-E;  
-}
-input::-moz-placeholder {  /* Firefox 19+ */
-color: $color-E;  
-}
-input:-ms-input-placeholder {  
-color: $color-E;  
 }
 
 option {
@@ -46,9 +41,10 @@ option {
 
 button {
   background-color: $color-A;
-  border: none;
+  border: 3px solid $color-A;
   color: $color-C;
-  &:hover {
+  border-radius: 20%/50%;
+  &:hover, &:focus {
     background-color: $color-C;
     color: $color-A;
   }

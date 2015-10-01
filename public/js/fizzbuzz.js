@@ -2,17 +2,13 @@
 
 var Fizzbuzz = (function() {
   
-  var _firstFizz;
-  var _secondBuzz;
   var Fizzbuzz = function(Fizz, Buzz) {
-    _firstFizz = Fizz || 'Fizz';
-    _secondBuzz = Buzz || 'Buzz';
-    this._firstFizz = Fizz || 'Fizz';
-    this._secondBuzz = Buzz || 'Buzz';
-    console.log("inside the routine", this._firstFizz, this._secondBuzz);
+    this.firstFizz = Fizz || 'Fizz';
+    this.secondBuzz = Buzz || 'Buzz';
+    console.log("inside the routine", this.firstFizz, this.secondBuzz);
   };
 
-//interal clear function to erase dom elements from screen
+//internal clear function to erase dom elements from screen
   var _clear = function(destination) {
     if (destination.hasChildNodes()) {
     destination.removeChild(destination.childNodes[0]);
@@ -20,17 +16,17 @@ var Fizzbuzz = (function() {
   }};
 
 //calculate fizzbuzz using variable passed in by the read method, output array of results.
-  var _calculate = function(firstNumber, secondNumber) {
+  var _calculate = function(firstNumber, secondNumber, firstFizz, secondBuzz) {
     var fbOutputArray = [];
     console.log("firstNumber: " + firstNumber + " secondNumber: " + secondNumber);
-    console.log(_firstFizz, _secondBuzz);
+    console.log(firstFizz, secondBuzz);
     for (var i = firstNumber; i <= secondNumber; i++) { 
       var output = ''; 
       if (i%3 === 0) { 
-        output += _firstFizz; 
+        output += firstFizz; 
       }
       if (i%5 === 0) {
-        output += _secondBuzz; 
+        output += secondBuzz; 
       }
       if (output === "") { 
         output = i; 
@@ -57,7 +53,7 @@ var Fizzbuzz = (function() {
     //assign values to properties of main game object
     this.firstNumber = firstNumber;
     this.secondNumber = secondNumber;
-    this.fbOutputArray = _calculate(firstNumber, secondNumber);
+    this.fbOutputArray = _calculate(firstNumber, secondNumber, this.firstFizz, this.secondBuzz);
   };
 
 //write markup with results of fizzbuzz calculation. Uses destination as argument so function can be used generically with any location in the DOM.
