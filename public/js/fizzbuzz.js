@@ -1,12 +1,13 @@
 "use strict";
 
 var Fizzbuzz = (function() {
-
+  
   var _firstFizz;
   var _secondBuzz;
   var Fizzbuzz = function(Fizz, Buzz) {
   _firstFizz = Fizz || 'Fizz';
   _secondBuzz = Buzz || 'Buzz';
+  console.log(_firstFizz, _secondBuzz, this);
   };
 
 //interal clear function to erase dom elements from screen
@@ -20,6 +21,7 @@ var Fizzbuzz = (function() {
   var _calculate = function(firstNumber, secondNumber) {
     var fbOutputArray = [];
     console.log("firstNumber: " + firstNumber + " secondNumber: " + secondNumber);
+    console.log(_firstFizz, _secondBuzz);
     for (var i = firstNumber; i <= secondNumber; i++) { 
       var output = ''; 
       if (i%3 === 0) { 
