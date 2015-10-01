@@ -73,7 +73,7 @@ var Fizzbuzz = (function() {
     resultContainer.appendChild(text2);
     resultSectionOuterBox.appendChild(resultTitleContainer);
     resultSectionOuterBox.appendChild(resultContainer);
-    destination.appendChild(resultSectionOuterBox);
+    destination.insertBefore(resultSectionOuterBox, destination.firstChild);
   };
 
   //Set up clear function to be usable outside the main class, attached to its own event handler
