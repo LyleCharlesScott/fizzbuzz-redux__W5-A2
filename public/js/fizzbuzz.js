@@ -63,14 +63,17 @@ var Fizzbuzz = (function() {
     for (var j=0; j < (this.fbOutputArray.length); j++) {
       fbOutputString += (this.fbOutputArray[j] + " ");
     };
+    var resultSectionOuterBox = document.createElement("div");
+    resultSectionOuterBox.className = "output l-output";
     var resultTitleContainer = document.createElement("p");
     var resultContainer = document.createElement("p");
     var text1 = document.createTextNode(fbOutputTitle);
     var text2 = document.createTextNode(fbOutputString);
     resultTitleContainer.appendChild(text1);
     resultContainer.appendChild(text2);
-    destination.appendChild(resultTitleContainer);
-    destination.appendChild(resultContainer);
+    resultSectionOuterBox.appendChild(resultTitleContainer);
+    resultSectionOuterBox.appendChild(resultContainer);
+    destination.appendChild(resultSectionOuterBox);
   };
 
   //Set up clear function to be usable outside the main class, attached to its own event handler

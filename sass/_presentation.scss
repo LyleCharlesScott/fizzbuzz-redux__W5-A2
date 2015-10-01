@@ -8,20 +8,18 @@ body {
   background-color: $color-A;
   font-family: Helvetica, sans-serif;
   color: $color-E;
+  box-sizing: border-box;
 }
 
-.FB-game-area {
+.FB-game-area, .results {
   border: 3px solid $color-B;
   background-color: $color-C;
   border-radius: 1%;
 }
 
-.results {
-  @extend .FB-game-area;
-}
-
 input {
   border: none;
+  color: $color-E;
   background-color: $color-D;
   &:focus {
     color: $color-E;
@@ -39,4 +37,29 @@ color: $color-E;
 }
 input:-ms-input-placeholder {  
 color: $color-E;  
+}
+
+option {
+  background-color: $color-A;
+  color: $color-E;
+}
+
+button {
+  background-color: $color-A;
+  border: none;
+  color: $color-C;
+  &:hover {
+    background-color: $color-C;
+    color: $color-A;
+  }
+  &:active {
+    border: 2px solid $color-E;
+  }
+}
+
+.output {
+  background-color: $color-A;
+  border: $color-B;
+  border-top: 3px solid $color-D;
+  padding: 0.5%;
 }

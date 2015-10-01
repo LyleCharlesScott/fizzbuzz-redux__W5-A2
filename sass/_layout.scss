@@ -1,13 +1,32 @@
-.FB {
+.l-FB {
   display: flex;
-  flex-direction: row;
-}
-.FB-game-area {
-  width: 50%;
-  margin: 0.5%;
-}
-.results {
-  display: flex;
+  flex-direction: column;
   justify-content: center;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+}
+
+.l-FB-game-area {
+  min-width: 45%;
+  max-width: 80%;
   margin: 0.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.l-input-area {
+  margin: 0.5%;
+}
+
+.l-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 90%;
+}
+.l-output {
+  min-width: 100%;
 }

@@ -1,5 +1,5 @@
-Used normalize from John Albin:
-https://github.com/JohnAlbin/normalize-scss
+Used ANIMATE by Dan Eden
+https://daneden.github.io/animate.css/
 
 # Week 5 Day 2
 
